@@ -11,7 +11,8 @@ export default function OrderListItem() {
     const [orders, setOrders] = useState([]);
 
     const fetchOrders = async () => {
-        const res = await fetch("https://localhost:7170/api/PizzaOrder/GetOrders");
+        //TODO: add env variables for api base URL
+        const res = await fetch("https://pizzashopproject.azurewebsites.net/api/PizzaOrder/GetOrders");
         const data = await res.json();
         setOrders(data);
     }

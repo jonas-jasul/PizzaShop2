@@ -31,13 +31,12 @@ builder.Services.AddDbContext<MyDatabaseContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
 
-app.UseStaticFiles(); 
+app.UseSwagger();
+app.UseSwaggerUI();
+
+
+app.UseStaticFiles();
 
 app.UseStaticFiles(new StaticFileOptions
 {

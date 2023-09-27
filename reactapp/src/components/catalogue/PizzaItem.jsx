@@ -17,7 +17,7 @@ function PizzaItem() {
     useEffect(() => {
         async function fetchPizzas() {
             try {
-                const res = await fetch('https://localhost:7170/api/PizzaImage/GetPizzasWithImages');
+                const res = await fetch('https://pizzashopproject.azurewebsites.net/api/PizzaImage/GetPizzasWithImages');
                 const data = await res.json();
                 setPizzas(data);
                 console.log("pizzas are", pizzas)
@@ -37,7 +37,7 @@ function PizzaItem() {
             try {
                 setImagesLoading(true);
                 const imgPromises = pizzas.map(async (pizza) => {
-                    const resImg = await fetch(`https://localhost:7170/api/PizzaImage/GetImage/${pizza.imageFileName}`);
+                    const resImg = await fetch(`https://pizzashopproject.azurewebsites.net/api/PizzaImage/GetImage/${pizza.imageFileName}`);
                     const dataImg = await resImg.blob();
                     return { id: pizza.id, imageBlob: dataImg };
                 });

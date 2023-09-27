@@ -29,7 +29,7 @@ export default function PizzaDetails({ slug }) {
     useEffect(() => {
         async function fetchPizzaInfo() {
             try {
-                const res = await fetch(`https://localhost:7170/api/PizzaSlug/GetPizzaSlug/${slug}`);
+                const res = await fetch(`https://pizzashopproject.azurewebsites.net/api/PizzaSlug/GetPizzaSlug/${slug}`);
                 const data = await res.json();
                 setPizzas(data);
                 console.log("pizzas slug is", pizzas)
@@ -47,7 +47,7 @@ export default function PizzaDetails({ slug }) {
     useEffect(() => {
         async function fetchSizes() {
             try {
-                const resSize = await fetch('https://localhost:7170/api/PizzaSizes/GetSizesList');
+                const resSize = await fetch('https://pizzashopproject.azurewebsites.net/api/PizzaSizes/GetSizesList');
                 const dataSize = await resSize.json();
                 setSizes(dataSize);
                 if (dataSize.length > 0) {
@@ -64,7 +64,7 @@ export default function PizzaDetails({ slug }) {
     useEffect(() => {
         async function fetchImage() {
             try {
-                const resImg = await fetch(`https://localhost:7170/api/PizzaImage/GetImage/${slug}.jpg`);
+                const resImg = await fetch(`https://pizzashopproject.azurewebsites.net/api/PizzaImage/GetImage/${slug}.jpg`);
                 const dataImg = await resImg.blob();
 
                 const url = URL.createObjectURL(dataImg);
@@ -82,7 +82,7 @@ export default function PizzaDetails({ slug }) {
     useEffect(() => {
         async function fetchToppings() {
             try {
-                const resTop = await fetch("https://localhost:7170/api/PizzaToppings/GetToppingsList");
+                const resTop = await fetch("https://pizzashopproject.azurewebsites.net/api/PizzaToppings/GetToppingsList");
                 const dataTop = await resTop.json();
 
                 setToppings(dataTop);
@@ -97,7 +97,7 @@ export default function PizzaDetails({ slug }) {
 
     const calculcateTotalPrice = async () => {
         try {
-            const res = await fetch("https://localhost:7170/api/PriceCalculation/CalculatePrice", {
+            const res = await fetch("https://pizzashopproject.azurewebsites.net/api/PriceCalculation/CalculatePrice", {
                 method: "POST",
                 headers: {
                     "Content-Type": 'application/json',
@@ -141,7 +141,7 @@ export default function PizzaDetails({ slug }) {
 
         };
         try {
-            const res = await fetch("https://localhost:7170/api/PizzaOrder/PostOrder", {
+            const res = await fetch("https://pizzashopproject.azurewebsites.net/api/PizzaOrder/PostOrder", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
